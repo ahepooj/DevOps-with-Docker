@@ -1,0 +1,2 @@
+> docker build -t 1.10 .
+> docker run -p 6006:5000 1.10
