@@ -1,0 +1,18 @@
+version: '3.5' 
+
+services:
+    redis-test:
+      image: redis
+
+    backend-test: 
+      build: ./backend
+      ports:
+       - '8000:8000'
+      environment:
+       - REDIS=redis-test
+
+    frontend-test: 
+      build: ./frontend
+      ports:
+       - '5000:5000'
+    
