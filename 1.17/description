@@ -1,0 +1,8 @@
+For this exercise, I decided to make a solution in order to do simple Python script testing.
+Starting a dedicated program such as MATLAB can take too long for quick tests, so a docker image could be a good alternative.
+When the image is run, a Python environment including numpy and pandas libraries is started.
+
+For future implementations, other libraries are easy to include to Dockerfile.
+
+dockerhub URL:
+https://hub.docker.com/r/ahepooj/1.17
