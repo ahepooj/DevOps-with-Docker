@@ -1,0 +1,28 @@
+version: '3.5' 
+
+services:
+    database-test:
+      image: postgres
+      environment:
+       - POSTGRES_USER=antti
+       - POSTGRES_PASSWORD=salasana
+
+    redis-test:
+      image: redis
+
+    backend-test: 
+      build: ./backend
+      ports:
+       - '8000:8000'
+      environment:
+       - REDIS=redis-test
+       - DB_USERNAME=postgres
+       - DB_PASSWORD=salasana
+       - DB_HOST=database-test
+
+
+    frontend-test: 
+      build: ./frontend
+      ports:
+       - '5000:5000'
+    
