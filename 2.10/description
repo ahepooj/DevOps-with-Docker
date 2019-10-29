@@ -1,0 +1,5 @@
+Every button works on my machine (Windows 10 Pro) without further changes. 
+Latest docker-compose.yml and Dockerfiles have been uploaded from previous assignment.
+
+The one thing I could not get working was the persistent database in exercise 2.9.
+I had too much trouble with the exercises on Windows 10, so it would be better to implement it in Unix.
