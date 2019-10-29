@@ -1,0 +1,22 @@
+version: '3.5'
+# This exercise killed my computer twice as it filled my C:/ drive
+# Could it be made a bit smaller for future use? Nevertheless, end product was hilarious :D
+services:
+
+    backend-test: 
+      build: ./ml-kurkkumopo-backend
+      ports:
+       - '5000:5000'
+      volumes:
+       - /model:/src/model
+
+    frontend-test: 
+      build: ./ml-kurkkumopo-frontend
+      ports:
+       - '3000:3000'
+
+    training-test: 
+      build: ./ml-kurkkumopo-training
+      volumes:
+       - /model:/src/model
+       - /imgs:/src/imgs
