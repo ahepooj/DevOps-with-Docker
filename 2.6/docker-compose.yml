@@ -4,8 +4,7 @@ services:
     database-test:
       image: postgres
       environment:
-       - POSTGRES_USER=antti
-       - POSTGRES_PASSWORD=salasana
+       - POSTGRES_USER=postgres
 
     redis-test:
       image: redis
@@ -17,7 +16,6 @@ services:
       environment:
        - REDIS=redis-test
        - DB_USERNAME=postgres
-       - DB_PASSWORD=salasana
        - DB_HOST=database-test
 
 
