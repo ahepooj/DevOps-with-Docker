@@ -1,0 +1,47 @@
+version: '3.5' 
+
+services:
+    nginx:
+      image: nginx
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf
+      ports:
+        - "80:80"
+      environment:
+        - NGINX_PORT=80
+
+    database-test:
+      image: postgres
+      environment:
+       - POSTGRES_USER=postgres
+       - POSTGRES_PASSWORD=salasana
+       - PGDATA=/tmp
+# Relative path was not used for the reason that Windows 10 would not mount the directory properly. I googled this issue and found other people having the same issue.
+# In hindsight, all of these exercises would have been much less troublesome on Unix rather than on Windows.
+      volumes:
+        - database:/var/lib/postgresql/data
+
+    redis-test:
+      image: redis
+
+    backend-test: 
+      build: ./backend
+      ports:
+       - '8000:8000'
+      environment:
+       - REDIS=redis-test
+       - DB_USERNAME=postgres
+       - DB_PASSWORD=salasana
+       - DB_HOST=database-test
+
+    frontend-test: 
+      build: ./frontend
+      ports:
+       - '5000:5000'
+
+networks:
+  default:
+     name: test-network
+
+volumes:
+  database:
